@@ -36,8 +36,8 @@ class Main extends luxe.Game
         // circle = new Texture();
 
 
-        hsp = 4;
-        total = 150;
+        hsp = 6;
+        total = 100;
         twidth = (total-1) * hsp;
 
 
@@ -48,9 +48,8 @@ class Main extends luxe.Game
 
             noo = new Ball({
                 name: 'ball${i}',
-                //color: new Color().rgb(0xf94b04),
-                pos: new Vector( (Luxe.screen.w - twidth)/2 + hsp*i, Luxe.screen.h/2 ),
-                size: new Vector( Ball.genminScale(), Ball.genminScale() )
+                color: new Color(0,0,0,0),
+                pos: new Vector( (Luxe.screen.w - twidth)/2 + hsp*i, Luxe.screen.h/2 )
             });
             noo.generate({
                 offset: _offset

@@ -29,7 +29,7 @@ class Ball extends Sprite
     public var variation:Float;
 
 
-    var _geom:CircleGeometry;
+    var circle:CircleGeometry;
 
     var value:Float;
     var value2:Float;
@@ -49,22 +49,22 @@ class Ball extends Sprite
         maxScale = genmaxScale(options.offset);
         variation = maxScale - minScale;
 
-        // geometry = new phoenix.geometry.CircleGeometry({
-        //     x : 0,
-        //     y : 0,
-        //     r : genminScale(),
-        //     color : new Color(0,1,0,1).rgb(0x00ff00)
-        // });
-
+        circle = Luxe.draw.circle({
+            x : 0,
+            y : 0,
+            r : 10,
+            color : new Color(0,1,0,1).rgb(0x00ff00)
+        });
+        
+        circle.transform.parent = transform;
     }
 
     override public function update(dt:Float):Void
     {
-        degree += inc;
+        degree += inc*dt;
 
         value = Math.sin(degree * Math.PI/180);
-        size.y = minScale + variation/2 + (variation/2) * value;
-        size.x = 3;
+        circle.transform.scale.y = circle.transform.scale.x = minScale + variation/2 + (variation/2) * value;
 
         coldegree += colinc;
 
@@ -84,7 +84,7 @@ class Ball extends Sprite
 
     function geninc(val:Float):Float
     {
-        return 3 * val;
+        return 20 * val;
     }
     function gencolinc(val:Float):Float
     {
@@ -96,15 +96,15 @@ class Ball extends Sprite
     }
     static public function genminScale(val:Float = 0):Float
     {
-        return 10;
+        return 0.2;
     }
     static public function genmaxScale(val:Float = 0):Float
     {
-        return 3 * val + 10;
+        return 1.5;
     }
     function genstartDegree(val:Float):Float
     {
-        return 2 * val;
+        return 35 * val;
     }
 
 }
