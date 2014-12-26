@@ -1,0 +1,25 @@
+{
+
+  project : {
+    name : 'inLine',
+    version : '0.0.1',
+    author : 'Darek Greenly',
+
+    app : {
+      name : 'inLine',
+      package : 'pl.zielak.inline'
+    },
+
+    build : {
+      dependencies : {
+        luxe : '*',
+      }
+    },
+
+    files : {
+      assets : 'assets/'
+    }
+
+  }
+
+}
